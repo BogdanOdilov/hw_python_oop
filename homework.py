@@ -1,7 +1,7 @@
 from dataclasses import dataclass
+
+
 @dataclass
-
-
 class InfoMessage:
     """Информационное сообщение о тренировке."""
     training_type: str
@@ -22,8 +22,6 @@ class InfoMessage:
 
 
 @dataclass
-
-
 class Training:
     """Базовый класс тренировки."""
     action: int
@@ -129,7 +127,8 @@ def read_package(workout_type: str, data: list) -> Training:
     operating_modes: type[Training] = {
         'SWM': Swimming,
         'RUN': Running,
-        'WLK': SportsWalking }
+        'WLK': SportsWalking
+        }
     redirection = operating_modes.get(workout_type)
     if redirection is None:
         raise
