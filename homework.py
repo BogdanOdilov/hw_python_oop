@@ -1,6 +1,7 @@
 from dataclasses import dataclass
-
 @dataclass
+
+
 class InfoMessage:
     """Информационное сообщение о тренировке."""
     training_type: str
@@ -22,6 +23,7 @@ class InfoMessage:
 
 @dataclass
 
+
 class Training:
     """Базовый класс тренировки."""
     action: int
@@ -32,6 +34,7 @@ class Training:
     SECUNDE: int = 60
     CF_RUN_1: int = 18
     CF_RUN_2: int = 20
+
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
         distance = self.action * self.LEN_STEP / self.M_IN_KM
@@ -67,6 +70,7 @@ class Running(Training):
                 * self.duration
                 * self.SECUNDE
                 )
+
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
@@ -122,7 +126,10 @@ class Swimming(Training):
 
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
-    operating_modes: Type[Training] = {'SWM': Swimming, 'RUN': Running, 'WLK': SportsWalking}
+    operating_modes: type[Training] = {
+        'SWM': Swimming,
+        'RUN': Running,
+        'WLK': SportsWalking }
     redirection = operating_modes.get(workout_type)
     if redirection is None:
         raise
